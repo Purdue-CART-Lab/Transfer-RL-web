@@ -324,10 +324,31 @@
       };
     }
 
-    // Visitor globe is now embedded inline in index.html (inside #visitorMapSlot)
-    // via a document.write call during initial HTML parsing — that lets the
-    // ClustrMaps script run in the main page context so it can attribute the
-    // visit to the real URL. See the inline <script> there.
+    // Visitor map — ClustrMaps static world map image.
+    // The image is both the visualization and the tracking pixel: ClustrMaps
+    // records a visit every time a browser fetches the PNG. Much more reliable
+    // than the globe.js script (no document.write, no iframe gymnastics).
+    const slot = document.getElementById('visitorMapSlot');
+    if (slot) {
+      const KEY = 'dZsiTLFFKTSJFfI7pO9rqarYVwaLYDc_iv3vs9aXpgo';
+      const link = document.createElement('a');
+      link.href = 'https://clustrmaps.com/site/' + KEY;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.title = 'See visitor details';
+      const img = document.createElement('img');
+      img.id = 'visitorMap';
+      img.alt = 'Visitor world map';
+      // Cache-busting timestamp so each page load refreshes & re-pings ClustrMaps
+      img.src = 'https://clustrmaps.com/map_v2.png?cl=ffffff&w=260&t=tt&d=' +
+                KEY + '&co=4b6cff&ct=808080&_=' + Date.now();
+      img.onerror = () => {
+        slot.innerHTML =
+          '<div class="map-placeholder">Map unavailable.</div>';
+      };
+      link.appendChild(img);
+      slot.appendChild(link);
+    }
   });
 
   // ---------- Scroll progress bar ----------

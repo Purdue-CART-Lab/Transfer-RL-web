@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <!-- Custom styles -->
-<link rel="stylesheet" href="static/css/custom.css?v=12" />
+<link rel="stylesheet" href="static/css/custom.css?v=13" />
 
 <!-- JS-enabled marker (gates initial-hidden reveal state in CSS, prevents
      content disappearing if JS fails to load) -->
@@ -324,21 +324,7 @@
       </div>
       <div class="stats-block">
         <div class="stats-label">Visitor map</div>
-        <div id="visitorMapSlot">
-          <!-- ClustrMaps globe — inline-injected via document.write so the
-               script runs in the *main page* context (not an iframe), which is
-               what ClustrMaps needs to record the visit against the real URL.
-               Only fires on http(s); local file:// previews stay offline. -->
-          <script>
-            if (/^https?:$/i.test(location.protocol)) {
-              document.write(
-                '<scr' + 'ipt type="text/javascript" id="clstr_globe" ' +
-                'src="https://clustrmaps.com/globe.js?d=' +
-                'dZsiTLFFKTSJFfI7pO9rqarYVwaLYDc_iv3vs9aXpgo"><\/scr' + 'ipt>'
-              );
-            }
-          </script>
-        </div>
+        <div id="visitorMapSlot"></div>
       </div>
     </div>
   </div>
@@ -387,7 +373,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="static/js/index.js?v=12" defer></script>
+<script src="static/js/index.js?v=13" defer></script>
 
 </body>
 </html>
