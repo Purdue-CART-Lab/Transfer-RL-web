@@ -349,7 +349,10 @@
       cfg.text =
         'var _wau = _wau || []; ' +
         '_wau.push(["map", "' + TRACKER_ID + '", "' + NAME + '", ' +
-        '"320", "200", "' + (isDark ? 'night' : 'day') + '", "cross-blue"]);';
+        // amung.us has only 'night' and 'classic' map backgrounds live on
+        // their CDN right now — the 'day' background returns 404, which is
+        // what caused the broken-image box. Use 'classic' for light mode.
+        '"320", "200", "' + (isDark ? 'night' : 'classic') + '", "cross-blue"]);';
       slot.appendChild(cfg);
 
       // Async loader
