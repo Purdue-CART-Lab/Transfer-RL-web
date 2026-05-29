@@ -6,7 +6,7 @@
 
 ## 🌐 Project page
 
-### → <https://hgy-seu.github.io/Transfer-RL-web/>
+### → <https://purdue-cart-lab.github.io/Transfer-RL-web/>
 
 Includes the abstract, key innovations, method overview, demonstration video, and full experimental results.
 
